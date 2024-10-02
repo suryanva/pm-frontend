@@ -1,7 +1,17 @@
+import { Outlet } from "react-router-dom";
+
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <div className="flex min-h-screen w-full bg-gray-50 text-gray-900">
+        <Sidebar />
+        <div className="flex flex-col w-full bg-gray-50 dark:bg-dark-bg  ">
+          <Header />
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 }
