@@ -5,9 +5,14 @@ import { createBrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
-import Body from "./components/Body";
 import Error from "./components/Error";
 import appStore from "../appStore";
+import DashBoard from "./pages/DashBoard";
+import Timeline from "./pages/Timeline";
+import Search from "./pages/Search";
+import Settings from "./pages/Settings";
+import Users from "./pages/Users";
+import Teams from "./pages/Teams";
 
 const appRouter = createBrowserRouter([
   {
@@ -16,7 +21,27 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: <DashBoard />,
+      },
+      {
+        path: "/timeline",
+        element: <Timeline />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+      {
+        path: "/teams",
+        element: <Teams />,
       },
     ],
     errorElement: <Error />,
