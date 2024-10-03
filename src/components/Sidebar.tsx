@@ -21,9 +21,7 @@ const Sidebar = () => {
   const sidebarClassNames = `fixed flex flex-col h-full justify-between shadow-xl transition-all duration-300 ease-in-out z-40 dark:bg-black overflow-y-auto bg-white {isOpen ? "w-64" : "w-0"}`;
   return (
     <>
-      <div
-        className={`flex min-h-screen {isOpen ? "w-64" : "w-0"} bg-gray-50 text-gray-900`}
-      >
+      <div className={`flex min-h-screen  bg-gray-50 text-gray-900`}>
         {/* Hamburger Icon to open sidebar when it's closed */}
         {!isOpen && (
           <button
