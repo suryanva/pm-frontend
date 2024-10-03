@@ -1,5 +1,5 @@
 const Body = () => {
-  return <div>Body</div>;
+  return <div className=" h-full w-full">Body</div>;
 };
 
 export default Body;
