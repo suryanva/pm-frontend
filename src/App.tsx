@@ -7,6 +7,9 @@ import Header from "./components/Header";
 
 function App() {
   const isDark = useSelector((state: RootState) => state.global.isDarkModeOn);
+  const isSideBarOpen = useSelector(
+    (state: RootState) => state.global.isSideBarOpen
+  );
 
   return (
     <>
@@ -18,7 +21,11 @@ function App() {
         <div>
           <Sidebar />
         </div>
-        <div className="flex flex-col w-full bg-gray-50 dark:bg-dark-bg">
+        <div
+          className={`flex flex-col w-full bg-gray-50 dark:bg-dark-bg ${
+            isSideBarOpen ? "ml-64" : "ml-0"
+          }`}
+        >
           <Header />
           <Outlet />
         </div>

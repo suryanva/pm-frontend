@@ -8,11 +8,16 @@ import { Moon, Sun } from "lucide-react";
 const Header = () => {
   const isDark = useSelector((store: RootState) => store.global.isDarkModeOn);
   const dispatch = useDispatch();
+  const isOpen = useSelector((state: RootState) => state.global.isSideBarOpen);
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 dark:bg-black">
       {/* {Search Bar} */}
       <div className="flex items-center gap-8">
-        <div className="relative flex h-min w-[200px]">
+        <div
+          className={`relative flex h-min w-[200px] ${
+            isOpen ? "ml-0" : "ml-14"
+          }`}
+        >
           <Search className="absolute left-[4px] top-1/2 mr-2 h-5 w-5 -translate-y-1/2 transform cursor-pointer dark:text-white" />
           <input
             type="search"

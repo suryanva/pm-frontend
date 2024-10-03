@@ -15,6 +15,9 @@ const globalSlice = createSlice({
     setIsSideBarOpen: (state, action: PayloadAction<boolean>) => {
       state.isSideBarOpen = action.payload;
     },
+    toggleSideBar: (state) => {
+      state.isSideBarOpen = !state.isSideBarOpen;
+    },
     setIsDarkModeOn: (state, action: PayloadAction<boolean>) => {
       state.isDarkModeOn = action.payload;
     },
@@ -24,7 +27,11 @@ const globalSlice = createSlice({
   },
 });
 
-export const { setIsSideBarOpen, setIsDarkModeOn, toggleDarkMode } =
-  globalSlice.actions;
+export const {
+  setIsSideBarOpen,
+  toggleSideBar,
+  setIsDarkModeOn,
+  toggleDarkMode,
+} = globalSlice.actions;
 
 export default globalSlice.reducer;
