@@ -1,7 +1,13 @@
 import { Search, Settings } from "lucide-react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { RootState } from "/home/surya/Courses/WebDev/Clones/jira_clone/pm-frontend/appStore.ts";
+import { toggleDarkMode } from "/home/surya/Courses/WebDev/Clones/jira_clone/pm-frontend/utils/redux/globalSlice.ts";
+import { Moon, Sun } from "lucide-react";
 
 const Header = () => {
+  const isDark = useSelector((store: RootState) => store.global.isDarkModeOn);
+  const dispatch = useDispatch();
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 dark:bg-black">
       {/* {Search Bar} */}
@@ -15,8 +21,22 @@ const Header = () => {
           />
         </div>
       </div>
+
       {/* {Icons} */}
       <div className="flex items-center">
+        {/* {Dark Mode Toggle} */}
+        <div className="flex items-center">
+          <button
+            onClick={() => dispatch(toggleDarkMode())}
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded"
+          >
+            {isDark ? (
+              <Sun className="h-6 w-6 dark:text-white" />
+            ) : (
+              <Moon className="h-6 w-6 dark:text-white" />
+            )}
+          </button>
+        </div>
         <Link
           to="/settings"
           className="h-min w-min rounded p-2 hover::bg-gray-100"
