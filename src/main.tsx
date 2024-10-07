@@ -13,6 +13,7 @@ import Search from "./pages/Search";
 import Settings from "./pages/Settings";
 import Users from "./pages/Users";
 import Teams from "./pages/Teams";
+import Projects from "./pages/Projects";
 
 const appRouter = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/teams",
         element: <Teams />,
+      },
+      {
+        path: "/projects/:projectId",
+        element: <Projects />,
       },
     ],
     errorElement: <Error />,

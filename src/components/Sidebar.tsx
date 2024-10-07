@@ -20,10 +20,18 @@ import { toggleSideBar } from "../../utils/redux/globalSlice";
 import { Menu, Home } from "lucide-react";
 import { X } from "lucide-react";
 import SidebarLinks from "./SidebarLinks";
+import { useGetProjectsQuery } from "../api/api.ts";
 
 const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(true);
   const [showPriority, setShowPriority] = useState(true);
+
+  const { data: response } = useGetProjectsQuery();
+  const projects = response?.data ?? [];
+
+  // useEffect(() => {
+  //   console.log(projects); // Check the structure of the API response
+  // }, [projects]);
 
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.global.isSideBarOpen);
@@ -110,6 +118,19 @@ const Sidebar = () => {
                 )}
               </button>
               {/* {Project Lists} */}
+              <>
+                {showProjects &&
+                  projects.length != 0 &&
+                  projects?.map((project, index) => (
+                    <SidebarLinks
+                      key={index}
+                      icon={Briefcase}
+                      label={project.name}
+                      href={`/projects/${project._id}`}
+                    />
+                  ))}
+              </>
+              {/* {Priority} */}
               <button
                 className="flex w-full items-center justify-between px-8 py-3 text-gray-500"
                 onClick={() => setShowPriority((prev) => !prev)}
